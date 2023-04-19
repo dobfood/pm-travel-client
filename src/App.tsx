@@ -2,7 +2,7 @@ import Layout from './components/layout';
 
 function App() {
   return (
-    <div className='app bg-gray-20 '>
+    <div className='app'>
       <Layout/>
     </div>
   );
