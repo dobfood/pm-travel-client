@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const Detail = (props: Props) => {
-  return (
-    <div>Detail</div>
-  )
-}
+  return <div>Detail</div>;
+};
 
-export default Detail
+export default Detail;

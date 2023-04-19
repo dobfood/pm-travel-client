@@ -2,7 +2,7 @@ import Logo from '~/assets/Logo.png';
 
 const Footer = () => {
   return (
-    <footer className='bg-foodter py-16'>
+    <footer className='bg-gradient-to-t from-[#f8d88f] to-[#e6f2ff] py-8'>
       <div className='justify-content mx-auto w-5/6 gap-16 md:flex'>
         <div className='mt-16 basis-1/2 md:mt-0'>
           <img alt='logo' src={Logo} />
