@@ -14,6 +14,7 @@ export default {
         'secondary-400': '#FFCD5B',
         'secondary-500': '#FFC132',
         'primary-400':'#b2eaef',
+        'text-span':'#85adad'
       },
       backgroundImage: (theme) => ({
         'gradient-yellowred':
