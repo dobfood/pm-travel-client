@@ -1,3 +1,3 @@
 export enum Endpoints {
-  TOURS = '/tour'
+  TOUR = 'tour'
 }
