@@ -1,0 +1,51 @@
+/* Custom select */
+.select {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .select select {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    line-height: 1;
+    border-radius: 0;
+    background: #fff;
+    border: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+  
+  /* Arrow */
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #555;
+  }
+  
+  /* Hover and focus styles */
+  .select:hover,
+  .select:focus {
+    outline: none;
+  }
+  
+  .select:hover select,
+  .select:focus select {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Disabled style */
+  .select:after {
+    color: #aaa;
+  }
+  
+  .select select:disabled {
+    color: #ccc;
+  }
