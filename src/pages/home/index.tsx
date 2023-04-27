@@ -1,18 +1,13 @@
-import React from 'react';
-import thumbnail from '~/assets/thumbnail.jpg';
-import { Link } from 'react-router-dom';
-
-import './index.css';
-import Header from './header';
 import Banner from './banner';
-import Filter from './filter';
-import Destination from './destination';
-import ScrollSnap from './scroll-snap';
 import CardType from './cardType';
+import Destination from './destination';
+import Filter from './filter';
+import Header from './header';
+import './index.css';
+import ScrollSnap from './scroll-snap';
 import Top from './top';
-type Props = {};
 
-function Home({}: Props) {
+function Home() {
   return (
     <div>
       {/* Hero section */}

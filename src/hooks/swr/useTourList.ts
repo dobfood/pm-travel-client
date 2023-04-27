@@ -10,7 +10,7 @@ export const useTourList = () => {
   );
 
   return {
-    tours: data,
+    tourList: data,
     isLoading,
     error,
     mutate
