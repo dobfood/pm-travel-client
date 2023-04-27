@@ -3,6 +3,7 @@ import Layout from '~/components/layout';
 import Detail from '~/pages/detail';
 import Home from '~/pages/home';
 import Login from '~/pages/login';
+import Register from '~/pages/register';
 import Tour from '~/pages/tour';
 type Props = {};
 
@@ -15,6 +16,7 @@ const Router = (props: Props) => {
       <Route path='/tour' element={<Tour />} />
       <Route path='/tour/:id' element={<Detail />} />
       <Route path='/home' element={<Home />} />
+      <Route path='/register' element={<Register />} />
     </Routes>
   );
 };
