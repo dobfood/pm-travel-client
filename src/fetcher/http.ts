@@ -1,7 +1,8 @@
 import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
-  AxiosError
+  AxiosError,
+  AxiosRequestConfig
 } from 'axios';
 import StorageUtils from '~/utils/storage';
 
@@ -20,12 +21,31 @@ http.interceptors.request.use(
 );
 
 http.interceptors.response.use(
-  <T>(response: AxiosResponse<T>): T => {
-    return response.data;
+  (response: AxiosResponse): AxiosResponse => {
+    return response;
   },
   (error: AxiosError) => {
     return Promise.reject(error);
   }
 );
 
-export default http;
+const responseBody = <T>(res: AxiosResponse<T>): T => res.data;
+
+class HttpService {
+  get<T>(url: string, config?: AxiosRequestConfig) {
+    return http.get<T>(url, config).then(responseBody);
+  }
+  post<T>(url: string, body: object, config?: AxiosRequestConfig) {
+    return http.post<T>(url, body, config).then(responseBody);
+  }
+
+  put<T>(url: string, body: object, config?: AxiosRequestConfig) {
+    return http.put<T>(url, body, config).then(responseBody);
+  }
+
+  delete<T>(url: string, config?: AxiosRequestConfig) {
+    return http.delete<T>(url, config).then(responseBody);
+  }
+}
+
+export default new HttpService();
