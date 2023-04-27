@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   extends: [
@@ -51,9 +51,9 @@ module.exports = {
         endOfLine: 'auto',
         useTabs: false,
         singleQuote: true,
-        printWidth: 80,
+        printWidth: 120,
         jsxSingleQuote: true
       }
     ]
   }
-};
+}
