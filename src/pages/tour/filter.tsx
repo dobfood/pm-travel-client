@@ -2,21 +2,26 @@ import React, { useState } from 'react';
 import Tours from './tour';
 import { AiOutlineSearch } from 'react-icons/ai';
 import './filter.css';
-type Props = {};
+type Props = {
+  categorys: any;
+  provinces: any;
+  onFilter: (selectedCategory: string, selectedProvince: string) => void;
+};
 
 const Filter = (props: Props) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [option1, setOption1] = useState('all');
-  const [option2, setOption2] = useState('popular');
-  const handleSearch = (event: any) => {
-    setSearchTerm(event.target.value);
-  };
-  const handleOption1 = (event: any) => {
-    setOption1(event.target.value);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedProvince, setSelectedProvince] = useState('');
+
+  const handleCategoryChange = (event: any) => {
+    setSelectedCategory(event.target.value);
   };
 
-  const handleOption2 = (event: any) => {
-    setOption2(event.target.value);
+  const handleProvinceChange = (event: any) => {
+    setSelectedProvince(event.target.value);
+  };
+
+  const handleFilter = () => {
+    props.onFilter(selectedCategory, selectedProvince);
   };
   return (
     <div className='bg-white border border-yellow-500 rounded-md border-4 mt-5'>
@@ -35,27 +40,38 @@ const Filter = (props: Props) => {
       </div>
       <div className='flex flex-col space-y-2'>
         <select
-          id='option1'
-          className='"w-full py-2 px-4 rounded-md border-b-2 appearance-none focus:outline-none '
+          id='province'
+          className='w-full py-2 px-4 rounded-md border-b-2 appearance-none focus:outline-none'
+          value={selectedProvince}
+          onChange={handleProvinceChange}
         >
-          <option value=''>Chọn địa điểm</option>
-          <option value='option1'>Option 1</option>
-          <option value='option2'>Option 2</option>
-          <option value='option3'>Option 3</option>
+          <option value=''>Chọn điểm đến </option>
+          {props.provinces.map((provinces: any) => (
+            <option key={provinces._id} value={provinces._id}>
+              {provinces.title}
+            </option>
+          ))}
         </select>
       </div>
       <div className='flex flex-col space-y-2'>
         <select
-          id='option2'
-          className='w-full py-2 px-4 rounded-md appearance-none focus:outline-none'
+          id='category'
+          className='w-full py-2 px-4 rounded-md border-b-2 appearance-none focus:outline-none'
+          value={selectedCategory}
+          onChange={handleCategoryChange}
         >
-          <option value=''>Chọn loại tour</option>
-          <option value='option1'>Option 1</option>
-          <option value='option2'>Option 2</option>
-          <option value='option3'>Option 3</option>
+          <option value=''>Chọn loại du lịch </option>
+          {props.categorys.map((categorys: any) => (
+            <option key={categorys._id} value={categorys._id}>
+              {categorys.title}
+            </option>
+          ))}
         </select>
       </div>
-      <button className='bg-blue-600 text-white py-2 px-4 border-t-4 border-yellow-500 w-full'>
+      <button
+        onClick={handleFilter}
+        className='bg-blue-600 text-white py-2 px-4 border-t-4 border-yellow-500 w-full'
+      >
         Tìm
       </button>
     </div>

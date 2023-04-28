@@ -24,19 +24,19 @@ const Navbar = () => {
                   to='/'
                   className='text-gray-400 hover:bg-[#bbdefa] hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                 >
-                  Home
+                  Trang chủ
                 </Link>
                 <Link
-                  to='/about'
+                  to='/tour'
                   className='text-gray-400 hover:bg-[#bbdefb] hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                 >
-                  About
+                  Tour du lịch
                 </Link>
                 <Link
                   to='/contact'
                   className='text-gray-400 hover:bg-[#b3e5fb] hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                 >
-                  Contact
+                  Về chúng tôi
                 </Link>
               </div>
             </div>

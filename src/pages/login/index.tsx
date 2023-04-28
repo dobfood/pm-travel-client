@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import thumbnail from '~/assets/thumbnail.jpg';
+import image from '~/assets/image.jpg';
 import { BsEyeSlash, BsEye } from 'react-icons/bs';
+import login from '~/assets/login.jpg';
+import { Link } from 'react-router-dom';
+
 type Props = {};
 
 const Login = (props: Props) => {
@@ -9,10 +12,14 @@ const Login = (props: Props) => {
     setShowPassword(!showPassword);
   };
   return (
-    <section className='bg-white min-h-screen flex items-center justify-center'>
+    <section className='bg-white min-h-screen flex items-center justify-center '
+    style={{
+      backgroundImage: `url(${login})`
+    }}
+    >
       <div
-        className='bg-gray-20 flex rounded-2xl shadow-lg
-       max-w-3xl p-5'
+        className='bg-white flex rounded-2xl shadow-lg
+       max-w-3xl p-5 ' 
       >
         <div className='md:w-1/2 px-16'>
           <h2
@@ -42,7 +49,7 @@ const Login = (props: Props) => {
                 {showPassword ? (
                   <BsEye className='absolute top-1/2 right-3 -translate-y-1/2' />
                 ) : (
-                  <BsEyeSlash  className='absolute top-1/2 right-3 -translate-y-1/2' />
+                  <BsEyeSlash className='absolute top-1/2 right-3 -translate-y-1/2' />
                 )}
               </div>
             </div>
@@ -62,12 +69,12 @@ const Login = (props: Props) => {
           <div className='mt-3 text-xs flex justify-between items-center text-[#002D74]'>
             <p>Không có tài khoảng ? </p>
             <button className='py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300'>
-              Đăng ký
+             <Link to='/register'> Đăng ký</Link>
             </button>
           </div>
         </div>
         <div className='w-1/2 p-5 rounded-xl'>
-          <img className='sm:block hidden rounded-2xl' src={thumbnail} alt='' />
+          <img className='sm:block hidden rounded-2xl' src={login} alt='' />
         </div>
       </div>
     </section>

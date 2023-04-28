@@ -1,7 +1,7 @@
 import Footer from '../footer';
 import Router from '~/routes';
 import Navbar from '../navbar';
-import Navigate from './navigate';
+import Scroll from '../scroll';
 
 type Props = {};
 
@@ -11,6 +11,7 @@ const Layout = (props: Props) => {
       <Navbar />
       <Router />
       <Footer />
+      <Scroll/>
     </>
   );
 };
