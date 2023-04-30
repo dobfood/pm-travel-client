@@ -1,5 +1,5 @@
 import React from 'react';
-import thumbnail from '~/assets/thumbnail.jpg';
+import banner from '~/assets/banner.jpeg';
 import { Link } from 'react-router-dom';
 type Props = {};
 
@@ -7,9 +7,9 @@ const Header = (props: Props) => {
   return (
     <section className=''>
       <div
-        className='relative bg-center bg-cover h-300 '
+        className='relative bg-center bg-cover h-300 hover:scale-105  transition duration-300  '
         style={{
-          backgroundImage: `url(${thumbnail})`
+          backgroundImage: `url(${banner})`
         }}
       >
         <div className='absolute inset-0 bg-gray-900 opacity-60'></div>

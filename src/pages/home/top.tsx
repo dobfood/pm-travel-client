@@ -1,95 +1,66 @@
 import React from 'react';
-import { BsStar } from 'react-icons/bs';
 import { FaStar } from 'react-icons/fa';
-import thumbnail from '~/assets/thumbnail.jpg';
-type Props = {};
+import { Link } from 'react-router-dom';
+type Props = { top5Tours: any };
 
 const Top = (props: Props) => {
-  const data = [
-    {
-      id: 1,
-      name: 'Product 1',
-      price: 500000,
-      rating: 4,
-      views: 100,
-      location: 'Location 1',
-      image: thumbnail
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      price: 500000,
-      rating: 3,
-      views: 200,
-      location: 'Location 2',
-      image: thumbnail
-    },
-    {
-      id: 3,
-      name: 'Product 3',
-      price: 500000,
-      rating: 5,
-      views: 300,
-      location: 'Location 3',
-      image: thumbnail
-    },
-    {
-      id: 4,
-      name: 'Product 4',
-      price: 500000,
-      rating: 4,
-      views: 400,
-      location: 'Location 4',
-      image: thumbnail
-    },
-    {
-      id: 5,
-      name: 'Product 5',
-      price: 500000,
-      rating: 4.5,
-      views: 500,
-      location: 'Location 5',
-      image: thumbnail
-    }
-  ];
   return (
     <div className='container mx-auto py-8'>
       <h2 className='text-2xl font-bold mb-2'>
         Top 5 tour được người dùng chú ý
       </h2>
       <p className='text-md  mb-2'>Các điểm này có nhiều điều chờ đón bạn</p>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-4 gap-4'>
-        {data.map((item: any) => (
-          <div
-            className='bg-white shadow-lg rounded-lg overflow-hidden'
-            key={item.id}
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-4 gap-4 '>
+        {props.top5Tours.map((item: any) => (
+          <Link
+            to={`/tour/${item._id}`}
+            key={item._id}
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
           >
-            <img
-              className='w-full h-48 object-cover'
-              src={item.image}
-              alt={item.name}
-            />
-            <div className='p-4'>
-              <h3 className='font-bold text-xl mb-2'>{item.name}</h3>
-              <div className='flex items-center justify-between'>
-                <span className=' flex font-bold text-md'>
-                  {item.rating}
-                  <FaStar />
-                </span>
-                <div className='flex items-center'>
-                  <span className='text-gray-500 text-sm'>{item.location}</span>
-                </div>
-              </div>
-              <div className='flex items-center justify-between'>
-                <span className='font-medium text-md'>{item.price} VNĐ</span>
-                <div className='flex items-center'>
-                  <span className='text-gray-500 text-xs'>
-                    {item.views} views
+            <div className='bg-white shadow-lg h-full rounded-lg overflow-hidden hover:-translate-y-3 hover:scale-105 transition duration-200'>
+              <img
+                className='w-full h-32 object-cover'
+                src={item.thumbnail.url}
+                alt={item.name}
+              />
+              <div className='p-4'>
+                <h3 className='font-bold text-xs mb-2'>{item.title}</h3>
+                <div className='flex items-center justify-between'>
+                  <span className=' flex  text-xs'>
+                    {item.totalViews} lượt xem
                   </span>
+                  <div className='flex items-center'>
+                    <span className='text-xs font-bold'>
+                      {item.destination}
+                    </span>
+                  </div>
+                </div>
+                <div className='flex items-center justify-between'>
+                  <span className='font-medium text-lg text-gray-700 hover:text-blue-600'>
+                    {item.price.toLocaleString('vi-VN', {
+                      currency: 'VND'
+                    })}
+                    {''}VNĐ
+                  </span>
+                  <div className='flex items-center'>
+                    <span className='text-gray-500 text-xs'></span>
+                  </div>
+                </div>
+                <div>
+                  <div className='flex items-center justify-between'>
+                    <span className='flex items-start'>Đánh giá :</span>
+                    <div className='flex items-center font-bold text-md'>
+                      {[...Array(item.ratting)].map((star, index) => (
+                        <FaStar key={index} className='text-yellow-400 pt-1' />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

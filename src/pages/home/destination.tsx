@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import thumbnail from '~/assets/thumbnail.jpg';
-type Props = {};
+type Props = { provinces: any };
 
 const Destination = (props: Props) => {
   const vietnam =
@@ -10,10 +10,16 @@ const Destination = (props: Props) => {
     <>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
         <Link to='/tour' className='relative p-2'>
-          <img src={thumbnail} alt='imag4e' className='w-full h-64' />
+          <img
+            src={props.provinces[5].image}
+            alt='imag4e'
+            className='w-full h-64 shadow-lg rounded-xl border-2 hover:border-yellow-500 overflow-hidden hover:shadow-md'
+          />
           <div className='absolute top-4 left-3 p-2'>
             <div className='flex items-center'>
-              <h3 className='text-white text-xl font-bold'>Hội an</h3>
+              <h3 className='text-white text-xl font-bold '>
+                {props.provinces[5].title}
+              </h3>
               <img src={vietnam} alt='vietnam' className='ml-2' />
             </div>
           </div>
@@ -24,13 +30,15 @@ const Destination = (props: Props) => {
         </Link>
         <div className='relative p-2'>
           <img
-            src='https://cf.bstatic.com/xdata/images/city/600x600/688866.jpg?k=fc9d2cb9fe2f6d1160e10542cd2b83f5a8008401d33e8750ee3c2691cf4d4f7e&o='
+            src={props.provinces[0].image}
             alt='imag2e'
-            className='w-full h-64'
+            className='w-full h-64 shadow-lg rounded-xl border-2 hover:border-yellow-500 overflow-hidden hover:shadow-md'
           />
           <div className='absolute top-4 left-3 p-2'>
             <div className='flex items-center'>
-              <h3 className='text-white text-xl font-bold'>Đà Nẵng</h3>
+              <h3 className='text-white text-xl font-bold'>
+                {props.provinces[0].title}
+              </h3>
               <img src={vietnam} alt='vietnam' className='ml-2' />
             </div>
           </div>
@@ -43,13 +51,15 @@ const Destination = (props: Props) => {
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
         <div className='relative p-2'>
           <img
-            src='https://q-xx.bstatic.com/xdata/images/city/170x136/688853.jpg?k=f6427c8fccdf777e4bbc75fcd245e7c66204280181bea23350388c76c57348d1&o='
+            src={props.provinces[9].image}
             alt='ima5ge'
-            className='w-full h-64'
+            className='w-full h-64 shadow-lg rounded-xl border-2 hover:border-yellow-500 overflow-hidden hover:shadow-md'
           />
           <div className='absolute top-4 left-3 p-2'>
             <div className='flex items-center'>
-              <h3 className='text-white text-xl font-bold'>Hồ chí minh</h3>
+              <h3 className='text-white text-xl font-bold'>
+                {props.provinces[9].title}
+              </h3>
               <img src={vietnam} alt='vietnam' className='ml-2' />
             </div>
           </div>
@@ -60,13 +70,15 @@ const Destination = (props: Props) => {
         </div>
         <div className='relative p-2'>
           <img
-            src='https://r-xx.bstatic.com/xdata/images/city/170x136/688907.jpg?k=8a219233969467d9f7ff828918cce2a53b4db6f1da1039d27222441ffb97c409&o='
+            src={props.provinces[12].image}
             alt='ima5ge'
-            className='w-full h-64'
+            className='w-full h-64 shadow-lg rounded-xl border-2 hover:border-yellow-500 overflow-hidden hover:shadow-md'
           />
           <div className='absolute top-4 left-3 p-2'>
             <div className='flex items-center'>
-              <h3 className='text-white text-xl font-bold'>Nha trang</h3>
+              <h3 className='text-white text-xl font-bold'>
+                {props.provinces[12].title}
+              </h3>
               <img src={vietnam} alt='vietnam' className='ml-2' />
             </div>
           </div>
@@ -77,13 +89,15 @@ const Destination = (props: Props) => {
         </div>
         <div className='relative p-2'>
           <img
-            src='https://r-xx.bstatic.com/xdata/images/city/170x136/688893.jpg?k=d32ef7ff94e5d02b90908214fb2476185b62339549a1bd7544612bdac51fda31&o='
+            src={props.provinces[7].image}
             alt='ima5ge'
-            className='w-full h-64'
+            className='w-full h-64 shadow-lg rounded-xl border-2 hover:border-yellow-500 overflow-hidden hover:shadow-md'
           />
           <div className='absolute top-4 left-3 p-2'>
             <div className='flex items-center'>
-              <h3 className='text-white text-xl font-bold'>Hà nội</h3>
+              <h3 className='text-white text-xl font-bold'>
+                {props.provinces[7].title}
+              </h3>
               <img src={vietnam} alt='vietnam' className='ml-2' />
             </div>
           </div>
