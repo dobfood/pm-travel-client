@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           shouldRetryOnError: false,
           revalidateOnFocus: false
         }}
-      >
+      > 
         <App />
       </SWRConfig>
     </BrowserRouter>
