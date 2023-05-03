@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import Tours from './tour';
 import Filter from './filter';
-import banner from '~/assets/banner.jpg'
+import banner from '~/assets/banner.jpg';
 import { useTourList, useCategory, useProvince } from '~/hooks/swr';
 import Loading from '../loading';
 type Props = {};
 
 const Tour = (props: Props) => {
-  const { tourList: tours,isLoading } = useTourList();
+  const { tourList: tours, isLoading } = useTourList();
   const { category: categorys } = useCategory();
   const { province: provinces } = useProvince();
   const [filteredTours, setFilteredTours] = useState(tours);
-  if(isLoading) return <Loading/>
+  if (isLoading) return <Loading />;
   if (!tours) return null;
   if (!categorys) return null;
   if (!provinces) return null;
@@ -19,10 +19,10 @@ const Tour = (props: Props) => {
   const handleFilter = (category: string, province: string) => {
     let filtered = tours;
     if (category) {
-      filtered = filtered.filter((tour) => tour.category === category);
+      filtered = filtered.filter((tour) => tour.idCategory?._id === category);
     }
     if (province) {
-      filtered = filtered.filter((tour) => tour.destination === province);
+      filtered = filtered.filter((tour) => tour.destination._id === province);
     }
     setFilteredTours(filtered);
   };

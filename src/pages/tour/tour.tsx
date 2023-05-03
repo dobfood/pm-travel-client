@@ -5,7 +5,6 @@ type Props = {
   tours: any;
 };
 const Tours = (props: Props) => {
-  const navigate = useNavigate();
   const filters = [
     { id: 1, name: 'Đề xuất của chúng tôi' },
     { id: 2, name: 'Sản phẩm được xem nhiều nhất' },
@@ -43,15 +42,15 @@ const Tours = (props: Props) => {
               />
             </div>
             <div className='col-span-8'>
-              <p className='text-gray-600 text-md'>{tour.destination}</p>
-              <h2 className='text-lg font-bold mb-1 hover:text-blue-500'>
+              <p className='text-gray-600 text-md'>{tour.destination?.title}</p>
+              <h2 className='text-lg font-bold mb-1 hover:text-blue-500'> 
                 {tour.title}
               </h2>
               <p className='text-gray-600 text-xs'>{tour.content}</p>
               <div className='flex items-center text-gray-600 text-sm'>
                 <b>Số ghế còn trống : {tour.maxNumber}</b>
                 <span className='flex justify-between ml-2'>
-                  <GrLocationPin /> {tour.category}
+                  <GrLocationPin /> {tour.idCategory?.title}
                 </span>
               </div>
               <div className='flex items-center justify-between mb-4'>

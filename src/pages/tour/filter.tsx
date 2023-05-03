@@ -11,7 +11,7 @@ type Props = {
 const Filter = (props: Props) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('');
-
+  
   const handleCategoryChange = (event: any) => {
     setSelectedCategory(event.target.value);
   };
