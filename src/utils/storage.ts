@@ -1,7 +1,7 @@
-type keyStorage = 'access-token';
+type keyStorage = 'access-token' | 'user';
 
 export default class StorageUtils {
-  static get(k: keyStorage): string | null {
+  static get(k: keyStorage): any | null {
     try {
       return JSON.parse(localStorage.getItem(k) ?? '');
     } catch (e) {
