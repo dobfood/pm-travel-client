@@ -33,7 +33,7 @@ const Top = (props: Props) => {
                   </span>
                   <div className='flex items-center'>
                     <span className='text-xs font-bold'>
-                      {item.destination}
+                      {item.destination?.title}
                     </span>
                   </div>
                 </div>

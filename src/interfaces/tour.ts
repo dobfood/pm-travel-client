@@ -21,3 +21,12 @@ export interface Tour {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface Category {
+  _id: string;
+  title: string;
+  thumbnail: string;
+  total: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
