@@ -7,7 +7,7 @@ type Props = {};
 function Banner(props: Props) {
   return (
     <>
-      <div className='relative border-b-2 border-gray-400 pb-4'>
+      <div className='relative border-b-2 border-gray-400 pb-4 md:block mt-8 '>
         <h2 className='text-2xl font-bold mb-2'>Ưu đãi</h2>
 
         <p className='text-sm mb-4'>

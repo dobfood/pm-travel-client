@@ -17,8 +17,8 @@ const Filter = () => {
   if (!categorys) return null;
 
   return (
-    <div className='relative pr-64 pl-64 bottom-7 pb-4'>
-      <div className='flex justify-center p-2 bg-blue-100 rounded-full'>
+    <div className='relative pr-64 pl-64 bottom-7 pb-4 z-30 md:block hidden'>
+      <div className='flex flex-col p-2 md:flex-row justify-center bg-blue-100 rounded-full'>
         <select
           id='province'
           className='w-4/12 p-2 mr-2 bg-white rounded-md'
@@ -34,7 +34,7 @@ const Filter = () => {
         </select>
         <select
           id='province'
-          className='w-4/12 p-2 mr-2 bg-white rounded-md'
+          className=' w-4/12 p-2 mr-2 bg-white rounded-md'
           value={selectedCategory}
           onChange={handleCategoryChange}
         >
@@ -52,7 +52,6 @@ const Filter = () => {
               search: `?category=${selectedCategory}&province=${selectedProvince}`
             }}
           >
-            {' '}
             Tìm kiếm
           </Link>
         </button>

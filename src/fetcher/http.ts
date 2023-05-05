@@ -4,6 +4,7 @@ import axios, {
   AxiosError,
   AxiosRequestConfig
 } from 'axios';
+import { NavigateFunction } from 'react-router-dom';
 import StorageUtils from '~/utils/storage';
 
 const http = axios.create({
@@ -17,15 +18,6 @@ http.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-  }
-);
-
-http.interceptors.response.use(
-  (response: AxiosResponse): AxiosResponse => {
-    return response;
-  },
-  (error: AxiosError) => {
-    return Promise.reject(error);
   }
 );
 

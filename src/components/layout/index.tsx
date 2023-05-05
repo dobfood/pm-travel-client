@@ -3,15 +3,13 @@ import Router from '~/routes';
 import Navbar from '../navbar';
 import Scroll from '../scroll';
 
-type Props = {};
-
-const Layout = (props: Props) => {
+const Layout = () => {
   return (
     <>
       <Navbar />
       <Router />
       <Footer />
-      <Scroll/>
+      <Scroll />
     </>
   );
 };

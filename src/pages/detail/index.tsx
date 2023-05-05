@@ -18,9 +18,8 @@ import Form from './form';
 import classNames from 'classnames';
 import { useTourDetail } from '~/hooks/swr';
 import Loading from '../loading';
-type Props = {};
 
-const Detail = (props: Props) => {
+const Detail = () => {
   const { id } = useParams();
   const [expandedDay, setExpandedDay] = useState(null);
   const handleDayClick = (day: any) => {
@@ -34,7 +33,7 @@ const Detail = (props: Props) => {
   if (isLoading) return <Loading />;
   if (!tour) return null;
   return (
-    <section className='pt-4'>
+    <section className='pt-4 z-30'>
       <div className='relative'>
         <img
           src={tour.thumbnail.url}
@@ -63,7 +62,9 @@ const Detail = (props: Props) => {
                 <RiMapPinLine size={40} className='text-primary-500' />
                 <div className='ml-4'>
                   <h2 className='text-lg font-bold text-gray-900'>Tour</h2>
-                  <p className='text-base text-gray-700'>{tour.idCategory?.title}</p>
+                  <p className='text-base text-gray-700'>
+                    {tour.idCategory?.title}
+                  </p>
                 </div>
               </div>
             </div>
@@ -80,7 +81,9 @@ const Detail = (props: Props) => {
               <div className='flex items-center p-4 rounded-lg shadow-md hover:shadow-lg bg-white'>
                 <BsPeople size={40} className='text-green-500' />
                 <div className='ml-4'>
-                  <h2 className='text-lg font-bold text-gray-900'>Số lượng</h2>
+                  <h2 className='text-lg font-bold text-gray-900'>
+                    Số lượng vé
+                  </h2>
                   <p className='text-base text-gray-700'>{tour.maxNumber}</p>
                 </div>
               </div>
@@ -126,35 +129,35 @@ const Detail = (props: Props) => {
               <hr className='section-divider' />
               <div className='space-y-8'>
                 <TransitionGroup>
-                  {tour.schedule.map((day: ScheduleItem) => (
+                  {tour.schedule.map((scedules: any) => (
                     <CSSTransition
-                      key={day._id}
+                      key={scedules._id}
                       classNames='fade'
                       timeout={300}
                     >
                       <div className='space-y-4'>
                         <div
                           className='flex items-center justify-between cursor-pointer'
-                          onClick={() => handleDayClick(day.day)}
+                          onClick={() => handleDayClick(scedules.day)}
                         >
                           <h3
                             className={classNames(
                               'text-lg font-medium',
-                              expandedDay === day.day
+                              expandedDay === scedules.day
                                 ? 'text-primary-500'
                                 : 'text-gray-900'
                             )}
                           >
-                            Ngày {day.day}
+                            Ngày {scedules.day} {scedules?.title}
                           </h3>
-                          {expandedDay === day.day ? (
+                          {expandedDay === scedules.day ? (
                             <BsChevronCompactUp className='h-5 w-5 text-primary-500' />
                           ) : (
                             <BsChevronCompactDown className='h-5 w-5 text-gray-400' />
                           )}
                         </div>
-                        {expandedDay === day.day && (
-                          <p className='text-gray-700'>{day.content}</p>
+                        {expandedDay === scedules.day && (
+                          <p className='text-gray-700'>{scedules.content}</p>
                         )}
                       </div>
                     </CSSTransition>
