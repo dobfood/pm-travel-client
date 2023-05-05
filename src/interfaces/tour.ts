@@ -19,14 +19,20 @@ export interface Tour {
   images: Image[];
   totalViews: number;
   maxNumber: number;
-  rating: number;
+  ratting: number;
   description: string;
   thumbnail: Image;
   codeTour: string;
   createdAt: Date;
   updatedAt: Date;
+  schedule: Schedule;
 }
 
+export interface Schedule {
+  day: number;
+  title: string;
+  content: string;
+}
 export interface Category {
   _id: string;
   title: string;

@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import * as yup from 'yup';
 import http from '~/fetcher/http';
 import StorageUtils from '~/utils/storage';
+import { useAuth } from '~/hooks/useAuth';
 
 type User = {
   _id: string;
@@ -31,6 +32,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/home';
   const currentUser = StorageUtils.get('user');
+  const { setAuth } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => {
@@ -44,6 +46,7 @@ const Login = () => {
     const data = await http.post<User>('/auth/signin', values);
     StorageUtils.set('access-token', data.accessToken);
     StorageUtils.set('user', data);
+    setAuth(data);
     navigate(from);
     Swal.fire({
       icon: 'success',
@@ -86,7 +89,7 @@ const Login = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            { formik.touched.email && formik.errors.email ? (
+            {formik.touched.email && formik.errors.email ? (
               <p className='text-sm text-red-500'>{formik.errors.email}</p>
             ) : null}
             <div className='relative'>
@@ -100,7 +103,9 @@ const Login = () => {
                 onBlur={formik.handleBlur}
               />
               {formik.errors.password ? (
-                <p className='text-sm text-red-500'>{formik.touched.password && formik.errors.password}</p>
+                <p className='text-sm text-red-500'>
+                  {formik.touched.password && formik.errors.password}
+                </p>
               ) : null}
               <div onClick={togglePassword} aria-hidden='true'>
                 {showPassword ? (
@@ -123,7 +128,7 @@ const Login = () => {
             <hr className='border-gray-400' />
           </div>
           <div className='mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]'>
-            <a href='4'>Quên mật khẩu của bạn ?</a>
+            <p>Quên mật khẩu của bạn ?</p>
           </div>
 
           <div className='mt-3 text-xs flex justify-between items-center text-[#002D74]'>

@@ -1,13 +1,12 @@
 import React from 'react';
 import banner from '~/assets/banner.jpeg';
 import { Link } from 'react-router-dom';
-type Props = {};
 
-const Header = (props: Props) => {
+const Header = () => {
   return (
     <section className=''>
       <div
-        className='relative bg-center bg-cover h-300 hover:scale-105  transition duration-300  '
+        className='relative bg-center bg-cover h-300 hover:scale-105  transition duration-300 z-10 '
         style={{
           backgroundImage: `url(${banner})`
         }}

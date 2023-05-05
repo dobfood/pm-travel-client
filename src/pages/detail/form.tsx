@@ -8,6 +8,7 @@ import http from '~/fetcher/http';
 import Swal from 'sweetalert2';
 import StorageUtils from '~/utils/storage';
 import jwt_decode from 'jwt-decode';
+import { useAuth } from '~/hooks/useAuth';
 
 type Props = { tours: any };
 const phoneRegExp = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
@@ -40,12 +41,8 @@ const initialValuesOrder: IFormData = {
   totalMoney: 0
 };
 const Form = (props: Props) => {
-  // const token = StorageUtils.get('user')
-  // console.log(token)
-  // const decodedToken = jwt_decode(token.accessToken);
-  // const exp:any = decodedToken.exp;
+  const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
-  const user = StorageUtils.get('user');
   const [person, setPerson] = useState(1);
   const [totalMoney, setTotalMoney] = useState(props.tours.price);
   const handlePersonChange = (event: any) => {
@@ -56,9 +53,9 @@ const Form = (props: Props) => {
   };
   const order = async (values: any, onSubmitProps: any) => {
     try {
-      values.totalPerson = person;
+      values.totalPerson = Number(person);
       values.totalMoney = totalMoney;
-      values.idCustomer = user._id;
+      values.idCustomer = auth._id;
       values.idTour = props.tours._id;
       await http.post('/order', values);
       onSubmitProps.resetForm();
@@ -73,19 +70,36 @@ const Form = (props: Props) => {
     }
   };
   const formik = useFormik<IFormData>({
-    initialValues: user ? user : initialValuesOrder,
+    initialValues: auth ? auth : initialValuesOrder,
     validationSchema: orderSchema,
     onSubmit: (values, onSubmitProps) => {
-      if (!user) {
+      if (auth) {
+        const decodedToken: any = jwt_decode(auth.accessToken);
+        const exp = decodedToken.exp;
+        if (exp < new Date().getTime() / 1000) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Có vẻ phiên đăng nhập hết hạn!',
+            text: 'Vui lòng đăng nhập lại'
+          });
+          StorageUtils.clear();
+          setAuth(null);
+          navigate('/login');
+        }
+      }
+
+      if (!auth) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Có vẻ bạn chưa đăng nhập!',
+          text: 'Vui lòng đăng nhập để được đặt tour'
+        });
         navigate('/login');
       } else {
         order(values, onSubmitProps);
       }
     }
   });
-  // useEffect(()=>{
-
-  // })
   return (
     <div className='booking'>
       <div className='booking__top d-flex align-items-center justify-content-between'>

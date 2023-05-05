@@ -18,7 +18,7 @@ const Tours = ({ setFilteredTours, tours, filteredTours }: Props) => {
 
   return (
     <div className='container mx-auto'>
-      <div className=' bg-[#f5f5f5] flex justify-center my-3 space-x-3 gap-1 rounded-full mb-4'>
+      <div className=' bg-[#f5f5f5]  flex  justify-center my-3 space-x-3 gap-1 rounded-full mb-4'>
         {filters.map((filter) => (
           <button
             key={filter.id}

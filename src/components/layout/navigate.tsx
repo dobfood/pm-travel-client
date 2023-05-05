@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-type Props = {};
-
-const Navigate = (props: Props) => {
+const Navigate = () => {
   const location = useLocation();
 
   // Split the pathname by "/"
