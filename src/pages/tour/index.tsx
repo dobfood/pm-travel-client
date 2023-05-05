@@ -1,23 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Tours from './tour';
 import Filter from './filter';
 import banner from '~/assets/banner.jpg';
 import { useTourList, useCategory, useProvince } from '~/hooks/swr';
 import Loading from '../loading';
+import { Tour } from '~/interfaces';
+import _ from 'lodash';
+import { useLocation } from 'react-router-dom';
+import qs from 'qs';
 type Props = {};
 
 const Tour = (props: Props) => {
+  const location = useLocation();
+  const queryParams = qs.parse(location.search, { ignoreQueryPrefix: true });
   const { tourList: tours, isLoading } = useTourList();
   const { category: categorys } = useCategory();
   const { province: provinces } = useProvince();
-  const [filteredTours, setFilteredTours] = useState(tours);
+  const [filteredTours, setFilteredTours] = useState<Tour[]>();
+
+  useEffect(() => {
+    if (tours) setFilteredTours(_.clone(tours));
+  }, [tours]);
+
   if (isLoading) return <Loading />;
   if (!tours) return null;
-  if (!categorys) return null;
-  if (!provinces) return null;
   if (!filteredTours) return null;
-  const handleFilter = (category: string, province: string) => {
-    let filtered = tours;
+  const handleFilter = (category: string, province: string, search: string) => {
+    let filtered = _.clone(tours);
+
+    if (search) {
+      filtered = filtered.filter((tour) =>
+        tour.title.toLowerCase().includes(search.toLowerCase())
+      );
+    }
     if (category) {
       filtered = filtered.filter((tour) => tour.idCategory?._id === category);
     }
@@ -30,11 +45,7 @@ const Tour = (props: Props) => {
   return (
     <>
       <div className='relative'>
-        <img
-          src={banner}
-          alt='your-image-description'
-          className='w-screen h-48 mb-2 opacity-80'
-        />
+        <img src={banner} alt='abc' className='w-screen h-48 mb-2 opacity-80' />
         <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center'>
           <h1 className='text-2xl text-white text-center'>
             Hãy lựa chọn những chuyến đi phù hợp với bạn
@@ -56,7 +67,11 @@ const Tour = (props: Props) => {
             />
           </div>
           <div className=' col-start-2 col-span-2'>
-            <Tours tours={filteredTours} />
+            <Tours
+              setFilteredTours={setFilteredTours}
+              tours={tours}
+              filteredTours={filteredTours}
+            />
           </div>
         </div>
       </div>

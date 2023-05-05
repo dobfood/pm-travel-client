@@ -30,7 +30,7 @@ const Detail = (props: Props) => {
       setExpandedDay(day);
     }
   };
-  const { tourDetail: tour = [], isLoading, error } = useTourDetail(id);
+  const { tourDetail: tour, isLoading, error } = useTourDetail(id);
   if (isLoading) return <Loading />;
   if (!tour) return null;
   return (
@@ -38,7 +38,7 @@ const Detail = (props: Props) => {
       <div className='relative'>
         <img
           src={tour.thumbnail.url}
-          alt={tour.thumbnail.title}
+          alt={tour.thumbnail.name}
           className='w-full h-96 object-cover'
         />
         <div className='absolute bottom-0 left-0 right-0 p-4 flex justify-between items-center bg-gray-900 bg-opacity-60 text-white'>

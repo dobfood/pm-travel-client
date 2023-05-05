@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 type Props = { card: any };
 const Card = (props: Props) => {
   return (
-    <div className='flex-shrink-0 w-48 h-48 m-2 shadow-md rounded-md overflow-hidden hover:-translate-y-3 hover:scale-105 transition duration-200'>
+    <Link
+      to={{ pathname: '/tour', search: `province=${props.card._id}` }}
+      className='flex-shrink-0 w-48 h-48 m-2 shadow-md rounded-md overflow-hidden hover:-translate-y-3 hover:scale-105 transition duration-200'
+    >
       <img
         src={props.card.image}
         alt={props.card.title}
@@ -12,7 +16,7 @@ const Card = (props: Props) => {
         <h2 className='text-md font-bold'>{props.card.title}</h2>
         <p className='text-sm text-gray-600'>{props.card.total} địa điểm</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

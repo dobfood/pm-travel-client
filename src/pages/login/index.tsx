@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import image from '~/assets/image.jpg';
 import { BsEyeSlash, BsEye } from 'react-icons/bs';
 import login from '~/assets/login.jpg';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { FormikHelpers, useFormik } from 'formik';
+import Swal from 'sweetalert2';
 import * as yup from 'yup';
 import http from '~/fetcher/http';
 import StorageUtils from '~/utils/storage';
@@ -45,6 +45,11 @@ const Login = () => {
     StorageUtils.set('access-token', data.accessToken);
     StorageUtils.set('user', data);
     navigate(from);
+    Swal.fire({
+      icon: 'success',
+      title: 'Đăng nhập thành công!',
+      text: 'Hãy tận hưởng những chuyến đi của bạn.'
+    });
   };
 
   const formik = useFormik<IFormValue>({
@@ -79,8 +84,9 @@ const Login = () => {
               placeholder='you@gmail.com'
               value={formik.values.email}
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
             />
-            {formik.errors.email ? (
+            { formik.touched.email && formik.errors.email ? (
               <p className='text-sm text-red-500'>{formik.errors.email}</p>
             ) : null}
             <div className='relative'>
@@ -91,9 +97,10 @@ const Login = () => {
                 placeholder='Mật khẩu'
                 value={formik.values.password}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
               {formik.errors.password ? (
-                <p className='text-sm text-red-500'>{formik.errors.password}</p>
+                <p className='text-sm text-red-500'>{formik.touched.password && formik.errors.password}</p>
               ) : null}
               <div onClick={togglePassword} aria-hidden='true'>
                 {showPassword ? (

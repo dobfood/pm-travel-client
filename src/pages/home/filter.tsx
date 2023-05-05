@@ -1,27 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useCategory, useProvince } from '~/hooks/swr';
 
-type Props = {};
+const Filter = () => {
+  const { province: provinces } = useProvince();
+  const { category: categorys } = useCategory();
+  const [selectedProvince, setSelectedProvince] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const handleProvinceChange = (e: any) => {
+    setSelectedProvince(e.target.value);
+  };
+  const handleCategoryChange = (e: any) => {
+    setSelectedCategory(e.target.value);
+  };
+  if (!provinces) return null;
+  if (!categorys) return null;
 
-const Filter = (props: Props) => {
   return (
     <div className='relative pr-64 pl-64 bottom-7 pb-4'>
-    <div className='flex justify-center p-2 bg-blue-100 rounded-full'>
-      <select className='w-4/12 p-2 mr-2 bg-white rounded-md'>
-        <option value=''>Loại tour</option>
-        <option value='1'>Tour trong nước</option>
-        <option value='2'>Tour nước ngoài</option>
-      </select>
-      <select className='w-4/12 p-2 mr-2 bg-white rounded-md'>
-        <option value=''>Địa điểm</option>
-        <option value='1'>Hà Nội</option>
-        <option value='2'>Đà Nẵng</option>
-        <option value='3'>Hồ Chí Minh</option>
-      </select>
-      <button className='w-2/12 p-2 text-white bg-blue-500 rounded-full'>
-        Tìm kiếm
-      </button>
+      <div className='flex justify-center p-2 bg-blue-100 rounded-full'>
+        <select
+          id='province'
+          className='w-4/12 p-2 mr-2 bg-white rounded-md'
+          value={selectedProvince}
+          onChange={handleProvinceChange}
+        >
+          <option value=''>Bạn muốn đi đâu? </option>
+          {provinces.map((provinces: any) => (
+            <option key={provinces._id} value={provinces._id}>
+              {provinces.title}
+            </option>
+          ))}
+        </select>
+        <select
+          id='province'
+          className='w-4/12 p-2 mr-2 bg-white rounded-md'
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+        >
+          <option value=''>Bạn muốn du lịch thế nào? </option>
+          {categorys.map((category: any) => (
+            <option key={category._id} value={category._id}>
+              {category.title}
+            </option>
+          ))}
+        </select>
+        <button className='w-2/12 p-2 text-white bg-blue-500 rounded-full'>
+          <Link
+            to={{
+              pathname: '/tour',
+              search: `?category=${selectedCategory}&province=${selectedProvince}`
+            }}
+          >
+            {' '}
+            Tìm kiếm
+          </Link>
+        </button>
+      </div>
     </div>
-  </div>
   );
 };
 

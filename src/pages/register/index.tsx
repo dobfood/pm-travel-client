@@ -99,7 +99,6 @@ const Register = () => {
                 className='p-2 mt-8 rounded-xl border w-full mb-2'
                 type='text'
                 name='fullName'
-                placeholder='Họ và tên'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.fullName}

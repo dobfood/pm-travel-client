@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import thumbnail from '~/assets/thumbnail.jpg';
 type Props = { provinces: any };
 
 const Destination = (props: Props) => {
@@ -9,7 +8,13 @@ const Destination = (props: Props) => {
   return (
     <>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-        <Link to='/tour' className='relative p-2'>
+        <Link
+          to={{
+            pathname: '/tour',
+            search: `?province=${props.provinces[5]._id}`
+          }}
+          className='relative p-2'
+        >
           <img
             src={props.provinces[5].image}
             alt='imag4e'
@@ -28,7 +33,13 @@ const Destination = (props: Props) => {
             <p className='text-md'> VNĐ 299.000</p>
           </div>
         </Link>
-        <div className='relative p-2'>
+        <Link
+          to={{
+            pathname: '/tour',
+            search: `?province=${props.provinces[0]._id}`
+          }}
+          className='relative p-2'
+        >
           <img
             src={props.provinces[0].image}
             alt='imag2e'
@@ -46,10 +57,16 @@ const Destination = (props: Props) => {
             <p className='text-xs'>Ưu đãi bắt đầu từ</p>
             <p className='text-md'> VNĐ 199.000</p>
           </div>
-        </div>
+        </Link>
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
-        <div className='relative p-2'>
+        <Link
+          to={{
+            pathname: '/tour',
+            search: `?province=${props.provinces[9]._id}`
+          }}
+          className='relative p-2'
+        >
           <img
             src={props.provinces[9].image}
             alt='ima5ge'
@@ -67,8 +84,14 @@ const Destination = (props: Props) => {
             <p className='text-xs'>Ưu đãi bắt đầu từ</p>
             <p className='text-md'> VNĐ 399.000</p>
           </div>
-        </div>
-        <div className='relative p-2'>
+        </Link>
+        <Link
+          to={{
+            pathname: '/tour',
+            search: `?province=${props.provinces[12]._id}`
+          }}
+          className='relative p-2'
+        >
           <img
             src={props.provinces[12].image}
             alt='ima5ge'
@@ -86,8 +109,14 @@ const Destination = (props: Props) => {
             <p className='text-xs'>Ưu đãi bắt đầu từ</p>
             <p className='text-md'> VNĐ 159.000</p>
           </div>
-        </div>
-        <div className='relative p-2'>
+        </Link>
+        <Link
+          to={{
+            pathname: '/tour',
+            search: `?province=${props.provinces[7]._id}`
+          }}
+          className='relative p-2'
+        >
           <img
             src={props.provinces[7].image}
             alt='ima5ge'
@@ -105,7 +134,7 @@ const Destination = (props: Props) => {
             <p className='text-xs'>Ưu đãi bắt đầu từ</p>
             <p className='text-md'> VNĐ 299.000</p>
           </div>
-        </div>
+        </Link>
       </div>
     </>
   );
