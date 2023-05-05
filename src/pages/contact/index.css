@@ -1,0 +1,28 @@
+.card {
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  font-weight: 800;
+  height: 4em;
+  width: 100%;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  display: table-cell;
+  vertical-align: middle;
+  letter-spacing: -2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card .subtle {
+  color: #000;
+  font-size: 0.5em;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.bg-gold {
+  background: -webkit-linear-gradient(110deg, #7ecafd 40%, #fdf8f8 60%);
+  background: -o-linear-gradient(110deg, #7ecafd 40%, #ffffff 60%);
+  background: -moz-linear-gradient(110deg, #7ecafd 40%, #ffffff 60%);
+  background: linear-gradient(110deg, #7ecafd 40%, #ffffff 60%);
+}
