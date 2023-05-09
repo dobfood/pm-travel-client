@@ -60,6 +60,7 @@ const Form = (props: Props) => {
       await http.post('/order', values);
       onSubmitProps.resetForm();
       navigate('/thank');
+      window.scrollTo(0, 0);
       Swal.fire({
         icon: 'success',
         title: 'Đặt tour thành công!',
@@ -91,12 +92,19 @@ const Form = (props: Props) => {
       if (!auth) {
         Swal.fire({
           icon: 'warning',
-          title: 'Có vẻ bạn chưa đăng nhập!',
+          title: 'Xin lỗi!',
           text: 'Vui lòng đăng nhập để được đặt tour'
         });
-        navigate('/login');
       } else {
-        order(values, onSubmitProps);
+        if (person > props.tours.maxNumber) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Xin lỗi! ',
+            text: 'Có vẻ số ghế bạn đặt hơn số ghế còn lại'
+          });
+        } else {
+          order(values, onSubmitProps);
+        }
       }
     }
   });
@@ -169,12 +177,8 @@ const Form = (props: Props) => {
                 placeholder='Số lượng người'
                 id='totalPerson'
                 onBlur={formik.handleBlur}
+                min='1'
               />
-              {/* {formik.touched.totalPerson && formik.errors.totalPerson && (
-                <div className='text-xs text-red-500 absolute'>
-                  *{formik.errors.totalPerson}
-                </div>
-              )} */}
             </div>
           </div>
           <div className='booking__bottom'>
@@ -214,12 +218,7 @@ const Form = (props: Props) => {
           </div>
           <button
             type='submit'
-            className={`btn bg-slate-400 py-3 rounded w-full mb-4 hover:bg-blue-600 text-white ${
-              props.tours.maxNumber < person
-                ? 'disabled hover:bg-slate-400'
-                : ''
-            }`}
-            disabled={props.tours.maxNumber < person}
+            className='btn bg-slate-400 py-3 rounded w-full mb-4 hover:bg-blue-600 text-white'
           >
             Đặt ngay
           </button>

@@ -43,16 +43,24 @@ const Login = () => {
     values: IFormValue,
     formikHelpers: FormikHelpers<IFormValue>
   ) => {
-    const data = await http.post<User>('/auth/signin', values);
-    StorageUtils.set('access-token', data.accessToken);
-    StorageUtils.set('user', data);
-    setAuth(data);
-    navigate(from);
-    Swal.fire({
-      icon: 'success',
-      title: 'Đăng nhập thành công!',
-      text: 'Hãy tận hưởng những chuyến đi của bạn.'
-    });
+    try {
+      const data = await http.post<User>('/auth/signin', values);
+      StorageUtils.set('access-token', data.accessToken);
+      StorageUtils.set('user', data);
+      setAuth(data);
+      navigate(from);
+      Swal.fire({
+        icon: 'success',
+        title: 'Đăng nhập thành công!',
+        text: 'Hãy tận hưởng những chuyến đi của bạn.'
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đăng nhập thất bại!',
+        text: 'Vui lòng kiểm tra lại email và mật khẩu.'
+      });
+    }
   };
 
   const formik = useFormik<IFormValue>({

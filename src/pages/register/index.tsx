@@ -19,7 +19,7 @@ const registerSchema = yup.object().shape({
     .required('Vui lòng nhập trường này')
     .matches(
       passwordRegExp,
-      'Mật khẩu phải chứa ít nhất 1 chữ thường, 1 chữ hoa, 1 số và 1 ký tự đặc biệt'
+      'Mật khẩu phải chứa ít nhất 1 chữ thường, chữ hoa,số và ký tự '
     ),
   confirmPassword: yup
     .string()
@@ -45,8 +45,13 @@ const initialValuesRegister: IFormData = {
 const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const togglePassword = () => {
     setShowPassword(!showPassword);
+  };
+  const toggleConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
   const register = async (values: any, onSubmitProps: any) => {
     try {
@@ -59,7 +64,11 @@ const Register = () => {
         text: 'Hãy đăng nhập để truy cập vào tài khoản của bạn.'
       });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Đăng ký thất bại!',
+        text: 'Email hoặt số điện thoại đã tồn tại.'
+      });
     }
   };
 
@@ -99,6 +108,7 @@ const Register = () => {
                 className='p-2 mt-8 rounded-xl border w-full mb-2'
                 type='text'
                 name='fullName'
+                placeholder='Họ và tên'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.fullName}
@@ -158,8 +168,8 @@ const Register = () => {
                 onBlur={formik.handleBlur}
                 value={formik.values.confirmPassword}
               />
-              <div onClick={togglePassword}>
-                {showPassword ? (
+              <div onClick={toggleConfirmPassword}>
+                {showConfirmPassword ? (
                   <BsEye className='absolute top-1/2 right-3 -translate-y-1/2' />
                 ) : (
                   <BsEyeSlash className='absolute top-1/2 right-3 -translate-y-1/2' />

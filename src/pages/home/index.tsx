@@ -1,3 +1,4 @@
+import BottomLead from '~/components/bottonLead';
 import Loading from '../loading';
 import Banner from './banner';
 import CardType from './cardType';
@@ -31,6 +32,7 @@ function Home() {
           <Top top5Tours={top5Tours} />
         </div>
       </div>
+      <BottomLead/>
       {/* Tours section */}
       {/* ... */}
 

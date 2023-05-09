@@ -49,3 +49,6 @@
   .select select:disabled {
     color: #ccc;
   }
+  button {
+    transition: background-color 0.5s ease-out;
+  }
