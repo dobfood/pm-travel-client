@@ -17,7 +17,7 @@ const Header = () => {
             <div className='lg:w-1/2'>
               <h1 className=' font-extrabold tracking-tight text-gray-100 '>
                 <span
-                  className='block  text-indigo-500 xl:inline text-4xl
+                  className='block  text-white xl:inline text-4xl
 sm:text-5xl md:text6xl'
                 >
                   Đặt lịch ngay!

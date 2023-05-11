@@ -1,0 +1,34 @@
+.btn-download {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    background-color: #f2994a;
+    border: none;
+    border-radius: 9999px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-download:hover,
+  .btn-download:focus {
+    background-color: #e87e16;
+    color: #fff;
+    outline: none;
+    box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.75);
+  }
+  
+  .btn-download:last-child {
+    margin-right: 0;
+  }
+  .bg-image {
+    background-image: url('https://kenh14cdn.com/thumb_w/620/2017/nguyen-hung-1500195090485.jpg');
+    background-size: cover;
+    background-position: center;
+  
+  }
+

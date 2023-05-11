@@ -7,17 +7,13 @@ import Loading from '../loading';
 import { Tour } from '~/interfaces';
 import _ from 'lodash';
 import { useLocation } from 'react-router-dom';
-import qs from 'qs';
-type Props = {};
 
-const Tour = (props: Props) => {
+const Tour = () => {
   const location = useLocation();
-  const queryParams = qs.parse(location.search, { ignoreQueryPrefix: true });
   const { tourList: tours, isLoading } = useTourList();
   const { category: categorys } = useCategory();
   const { province: provinces } = useProvince();
   const [filteredTours, setFilteredTours] = useState<Tour[]>();
-
   useEffect(() => {
     if (tours) setFilteredTours(_.clone(tours));
   }, [tours]);
@@ -29,15 +25,19 @@ const Tour = (props: Props) => {
     let filtered = _.clone(tours);
 
     if (search) {
-      filtered = filtered.filter((tour) =>
+      filtered = filtered.filter((tour: any) =>
         tour.title.toLowerCase().includes(search.toLowerCase())
       );
     }
     if (category) {
-      filtered = filtered.filter((tour) => tour.idCategory?._id === category);
+      filtered = filtered.filter(
+        (tour: any) => tour.idCategory?._id === category
+      );
     }
     if (province) {
-      filtered = filtered.filter((tour) => tour.destination._id === province);
+      filtered = filtered.filter(
+        (tour: any) => tour.destination._id === province
+      );
     }
     setFilteredTours(filtered);
   };
@@ -55,11 +55,11 @@ const Tour = (props: Props) => {
 
       <div className='pr-32 pl-32'>
         <div className='flex flex-col space-y-2'>
-          <h2 className='text-2xl font-bold mt-5'>Địa điểm tham quan</h2>
+          <h2 className='text-2xl font-medium mt-5'>Địa điểm tham quan</h2>
           <p className='font-bold pb-4'>{filteredTours.length} hoạt động</p>
         </div>
         <div className='grid grid-cols-3 gap-8 lg:grid-cols-1 md:grid-cols-3'>
-          <div className=' col-start-1 col-span-1'>
+          <div className=' col-start-1 col-span-1 '>
             <Filter
               categorys={categorys}
               provinces={provinces}

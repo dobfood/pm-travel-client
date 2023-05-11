@@ -19,7 +19,14 @@ const Thank = () => {
           tin và thanh toán.
         </p>
         <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md'>
-          <Link to='/home'>Quay về trang chủ</Link>
+          <Link
+            to='/home'
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+          >
+            Quay về trang chủ
+          </Link>
         </button>
         <div className=' text-xs mt-4 text-gray-700'>
           Nếu bạn có bất kỳ thắc mắc nào, hãy liên hệ với chúng tôi qua số điện

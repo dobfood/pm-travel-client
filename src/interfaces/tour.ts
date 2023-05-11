@@ -6,8 +6,7 @@ export interface province {
   _id: string;
   title: string;
 }
-
-export interface Tour {
+export interface tours{
   _id: string;
   idCategory: province;
   title: string;
@@ -26,6 +25,10 @@ export interface Tour {
   createdAt: Date;
   updatedAt: Date;
   schedule: Schedule;
+}
+export interface Tour {
+  tour : tours;
+  total:number
 }
 
 export interface Schedule {

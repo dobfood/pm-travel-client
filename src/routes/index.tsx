@@ -1,5 +1,6 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Switch } from 'react-router-dom';
 import Layout from '~/components/layout';
+import Error404 from '~/pages/404';
 import AboutUs from '~/pages/about/ibndex';
 import Contact from '~/pages/contact';
 import Detail from '~/pages/detail';
@@ -22,6 +23,7 @@ const Router = () => {
       <Route path='/thank' element={<Thank />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/about' element={<AboutUs />} />
+      <Route path='/*' element={<Error404 />} />
     </Routes>
   );
 };
