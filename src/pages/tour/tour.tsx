@@ -84,7 +84,7 @@ const Tours = ({ setFilteredTours, tours, filteredTours }: Props) => {
                 <p className='text-gray-600 text-md'>
                   {tour.destination?.title}
                 </p>
-                <h2 className='text-lg font-bold mb-1 hover:text-blue-500'>
+                <h2 className='text-lg font-medium mb-1 hover:text-blue-500'>
                   {tour.title}
                 </h2>
                 <p className='text-gray-600 text-xs'>{tour.content}</p>

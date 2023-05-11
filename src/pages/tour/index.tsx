@@ -55,7 +55,7 @@ const Tour = () => {
 
       <div className='pr-32 pl-32'>
         <div className='flex flex-col space-y-2'>
-          <h2 className='text-2xl font-bold mt-5'>Địa điểm tham quan</h2>
+          <h2 className='text-2xl font-medium mt-5'>Địa điểm tham quan</h2>
           <p className='font-bold pb-4'>{filteredTours.length} hoạt động</p>
         </div>
         <div className='grid grid-cols-3 gap-8 lg:grid-cols-1 md:grid-cols-3'>
