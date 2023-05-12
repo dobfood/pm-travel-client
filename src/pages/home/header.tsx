@@ -15,7 +15,7 @@ const Header = () => {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32'>
           <div className='relative lg:flex lg:items-center'>
             <div className='lg:w-1/2'>
-              <h1 className=' font-extrabold tracking-tight text-gray-100 '>
+              <h1 className='  tracking-tight text-gray-100 '>
                 <span
                   className='block  text-white xl:inline text-4xl
 sm:text-5xl md:text6xl'
@@ -23,8 +23,7 @@ sm:text-5xl md:text6xl'
                   Đặt lịch ngay!
                 </span>
                 <span
-                  className='block  xl:inline text-2xl
-sm:text-3xl md:text4xl mt-2'
+                  className='block xl:inline text-2xl sm:text-3xl md:text4xl mt-2'
                 >
                   hãy trải nghiệm
                 </span>
