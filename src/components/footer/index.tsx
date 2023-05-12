@@ -9,7 +9,7 @@ const Footer = () => {
         <h2>Liên hệ</h2>
 
         <address>
-          <a className='footer__btn' href='mailto:example@gmail.com'>
+          <a className='footer__btn' href='mailto:phuongmai_travel@gmail.com'>
             Gửi email cho chúng tôi
           </a>
         </address>

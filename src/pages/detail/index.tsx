@@ -99,21 +99,23 @@ const Detail = () => {
                 duration={500}
                 spy={true}
                 offset={-70}
-                className='scroll-button'
+                className='scroll-button hover:bg-gray-300'
               >
                 Mô tả
               </Link>
             </div>
-            <Link
-              to='program'
-              smooth={true}
-              duration={500}
-              spy={true}
-              offset={-70}
-              className='scroll-button'
-            >
-              Lich trình
-            </Link>
+            <div className='col-span-1 md:col-span-1'>
+              <Link
+                to='program'
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-70}
+                className='scroll-button hover:bg-gray-300'
+              >
+                Lich trình
+              </Link>
+            </div>
           </div>
 
           <div id='description' className='section'>

@@ -75,13 +75,13 @@ const Filter = (props: Props) => {
         <div className='flex flex-col space-y-2 mb-4'>
           <select
             id='province'
-            className='bg-transparent w-80% py-2 border-b px-4 rounded-md appearance-none focus:outline-none hover:bg-gray-300'
+            className='bg-transparent w-80% py-2 border-b  px-4 rounded-md appearance-none focus:outline-none hover:text-gray-300'
             value={selectedProvince}
             onChange={handleProvinceChange}
           >
             <option value=''>Chọn điểm đến ?</option>
             {props.provinces.map((provinces: any) => (
-              <option key={provinces._id} value={provinces._id}>
+              <option className='text-black' key={provinces._id} value={provinces._id}>
                 {provinces.title}
               </option>
             ))}
@@ -90,13 +90,13 @@ const Filter = (props: Props) => {
         <div className='flex flex-col space-y-2 mb-4 bg-transparent'>
           <select
             id='province'
-            className='bg-transparent w-80% py-2 px-4 border-b rounded-md appearance-none focus:outline-none hover:bg-gray-300'
+            className='bg-transparent w-80% py-2 hover:text-gray-300 px-4 border-b rounded-md appearance-none focus:outline-none'
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
             <option value=''>Chọn loại du lịch ?</option>
             {props.categorys.map((category: any) => (
-              <option key={category._id} value={category._id}>
+              <option className='text-black' key={category._id} value={category._id}>
                 {category.title}
               </option>
             ))}
@@ -129,7 +129,7 @@ const Filter = (props: Props) => {
               key={category._id}
               className='flex items-start justify-start py-2 pb-4 mb-2'
             >
-              <button className=' text-start text-md font-medium hover:text-blue-500 border-[#f3f4f6] w-full border-b-2 p-2'>
+              <button className=' text-start text-md font-medium hover:text-gray-300 border-[#f3f4f6] w-full border-b-2 p-2'>
                 <Link
                   to={{
                     pathname: '/tour',
